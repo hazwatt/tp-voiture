@@ -15,6 +15,7 @@ require_once __DIR__ . '/../config/data-base.php';
 
 <!-- Custom styles for this template -->
 <link href="assets/css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
     <!-- Navigation -->
@@ -28,12 +29,12 @@ require_once __DIR__ . '/../config/data-base.php';
       <?php
       //gestion du menu dynamique
       $menuItems = [
-          ['label'=> 'Acceuil','Link'=> 'index.php'],
+          ['label'=> 'Accueil','Link'=> 'index.php'],
           ['label'=> 'Ajouter une voiture','Link'=> 'add-car.php']
       ];
       ?>
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mr-auto">
           <?php
           foreach($menuItems as $items){ ?>
             <li class="nav-item">
@@ -48,7 +49,7 @@ require_once __DIR__ . '/../config/data-base.php';
             </li>
             <li class="nav-item">
               <a class="nav-link" href="sign-up.php">
-                Incription
+                Inscription
               </a>
             </li>
             <li class="nav-item">

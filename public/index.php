@@ -3,7 +3,7 @@
 include(__DIR__.'/../partials/header.php');
 ?>
 <div class="container">
-    <div class="row">
+    <div class="row border-row">
         <div class="col-1 gras">#
         </div>
         <div class="col-3 gras">Photo
@@ -23,20 +23,24 @@ include(__DIR__.'/../partials/header.php');
     $query = $db->query('SELECT * FROM cars');
     $cars = $query->fetchAll();
     foreach($cars as $car) {?>
-    <div class="row">
+    <div class="row border-row">
         <div class="col-1"><?= $car['id']; ?>
         </div>
         <div class="col-3"><div class="movie-cover" style="background-image: url(assets/img/<?= $car['Photo']; ?>)"></div>
         </div>
         <div class="col-1"><?= $car['Marque']; ?>
         </div>
-        <div class="col-2"><?= $car['Modèle']; ?>
+        <div class="col-2"><?= $car['Modele']; ?>
         </div>
-        <div class="col-2"><?= $car['Prix']; ?>
+        <div class="col-2"><?= $nombre_format_francais = number_format($car['Prix'], 2, ',', ' '); ?>€
         </div>
-        <div class="col-2"><?= $car['Année de sortie']; ?>
+        <div class="col-2"><?= $car['Annee_de_sortie']; ?>
         </div>
-        <div class="col-1">Actions
+        <div class="col-1">
+            <div class="row">
+                <div class="col-6"><button type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></div>
+                <div class="col-6"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></div>
+        </div>
         </div>
     </div>
 <?php } ?>
