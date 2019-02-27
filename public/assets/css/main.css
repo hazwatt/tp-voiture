@@ -1,0 +1,12 @@
+.row{
+    border-bottom: solid gray;
+    padding: 1rem;
+}
+.gras{
+    font-weight: bolder;
+}
+.movie-cover{
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+}

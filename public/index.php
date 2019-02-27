@@ -1,0 +1,45 @@
+<?php
+// On inclus le fichier header.php sur la page
+include(__DIR__.'/../partials/header.php');
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-1 gras">#
+        </div>
+        <div class="col-3 gras">Photo
+        </div>
+        <div class="col-1 gras">Marque
+        </div>
+        <div class="col-2 gras">Modèle
+        </div>
+        <div class="col-2 gras">Prix
+        </div>
+        <div class="col-2 gras">Année de sortie
+        </div>
+        <div class="col-1 gras">Actions
+        </div>
+    </div>
+    <?php
+    $query = $db->query('SELECT * FROM cars');
+    $cars = $query->fetchAll();
+    foreach($cars as $car) {?>
+    <div class="row">
+        <div class="col-1"><?= $car['id']; ?>
+        </div>
+        <div class="col-3"><div class="movie-cover" style="background-image: url(assets/img/<?= $car['Photo']; ?>)"></div>
+        </div>
+        <div class="col-1"><?= $car['Marque']; ?>
+        </div>
+        <div class="col-2"><?= $car['Modèle']; ?>
+        </div>
+        <div class="col-2"><?= $car['Prix']; ?>
+        </div>
+        <div class="col-2"><?= $car['Année de sortie']; ?>
+        </div>
+        <div class="col-1">Actions
+        </div>
+    </div>
+<?php } ?>
+</div>
+</body>
+</html>
