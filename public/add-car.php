@@ -18,12 +18,16 @@ if(!empty($_POST)){
 
     if(empty($Marque)){
         $error['Marque'] ='Le nom de la marque n\' est pas valide';
+    }else if(strlen($Marque) < 2){
+        $error['Marque'] = 'La marque requiert 2 caracteres minimum';
     }
     if(empty($Modele)){
         $error['Modele'] = 'Le nom du modèle n\' est pas valide';
     }
     if(empty($Prix)){
         $error['Prix'] = 'Le Prix n\' est pas correct';
+    }else if(intval($Prix) < 10000){
+        $error['Prix'] = 'Le Prix n\'e peut pas etre inferieur a 10 000€';
     }
     if(empty($Annee_de_sortie)){
         $error['Annee_de_sortie'] = 'L\' Année de sortie n\' est pas correct';
@@ -36,6 +40,13 @@ if(!empty($_POST)){
         $Photo = $fileName;
     } else {
         $Photo = null;
+    }
+    if (exif_imagetype('assets/img/'.$Photo) != IMAGETYPE_JPEG) {
+        if (exif_imagetype('assets/img/'.$Photo) != IMAGETYPE_PNG) {
+           if (exif_imagetype('assets/img/'.$Photo) != IMAGETYPE_GIF) {
+                die('cette image pas bon') ;
+            }
+        }
     }
     if (empty($error)) {
         $query = $db->prepare('INSERT INTO cars (Photo, Marque, Modele, Prix, Annee_de_sortie) VALUES (:Photo, :Marque, :Modele, :Prix, :Annee_de_sortie)');
@@ -82,7 +93,14 @@ if (!empty($error)) {
 
                 <div class="form-group">
                     <label for="Annee_de_sortie">Annee de sortie *</label>
-                    <input type="text" name="Annee_de_sortie" id="Annee_de_sortie" class="form-control">
+                    <select name="Annee_de_sortie" id="Annee_de_sortie" class="form-control">
+                        <?php
+                        $dateactuel = date('Y');
+                        for($date = 1951; $date <= $dateactuel ; $date++){
+                           ?> <option value="<?= $date ?>"> <?php echo $date; ?> </option> <?php
+                        }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="Photo">Photo *</label>

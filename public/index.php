@@ -20,11 +20,12 @@ include(__DIR__.'/../partials/header.php');
         </div>
     </div>
     <?php
+    $i=1;
     $query = $db->query('SELECT * FROM cars');
     $cars = $query->fetchAll();
     foreach($cars as $car) {?>
     <div class="row border-row">
-        <div class="col-1"><?= $car['id']; ?>
+        <div class="col-1"><?php echo $i++; ?>
         </div>
         <div class="col-3"><div class="movie-cover" style="background-image: url(assets/img/<?= $car['Photo']; ?>)"></div>
         </div>
